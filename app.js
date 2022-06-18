@@ -4,7 +4,7 @@ var express = require('express');
 var httpProxy = require("http-proxy");
 const { TARGET_SERVER, SERVER } = require("./src/config/config.js");
 const Mongo = require("./src/helpers/Mongo.js");
-const userRouter = require('./src/router/Users.js');
+const userRouter = require('./src/router/Auth.js');
 
 const app = express();
 const mongo = new Mongo();

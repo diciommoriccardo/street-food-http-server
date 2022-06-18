@@ -14,10 +14,16 @@ const DATABASE = {
     USER: process.env.DATABASE_USER,
     PASS: process.env.DATABASE_PASS,
     CLUSTER_SHARD: process.env.DATABASE_CLUSTER_SHARD
-};
+}
+
+const GOOGLE = {
+    CLIENT: process.env.GOOGLE_CLIENT_ID,
+    SECRET: process.env.GOOGLE_SECRET
+}
 
 module.exports =  {
     SERVER,
     TARGET_SERVER,
-    DATABASE
+    DATABASE,
+    GOOGLE
 }

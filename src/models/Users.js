@@ -8,7 +8,8 @@ const Users = mongoose.model("Users", mongoose.Schema({
     username: {
         type: String, 
         unique: true
-    }
+    },
+    user_id: String
 }))
 
 module.exports = Users;
