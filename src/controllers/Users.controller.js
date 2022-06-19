@@ -2,17 +2,6 @@ var Users = require('../models/Users.js');
 var Bcrypt = require('../helpers/Bcrypt.js');
 
 const userController = {
-    // login: (req) => {
-    //     return new Promise((resolve, reject) => {
-    //         Users.findOne(req.body.username)
-    //         .then(data => {
-    //             Bcrypt.compare(req.body.password, data.password)
-    //             .then((valid) => valid ? resolve(row) : reject())
-    //             .catch(err => reject(err))
-    //         })
-    //     })
-    // },
-
     signUp: (req) => {
         return new Promise((resolve, reject) => {
             Bcrypt.getHashedPassword(req.body.password)
@@ -25,9 +14,9 @@ const userController = {
         })
     },
 
-    getByUsername: (username) => {
+    getByEmail: ({email: email}) => {
         return new Promise((resolve, reject) => {
-            Users.findOne(username)
+            Users.findOne(email)
             .then(data => resolve(data))
             .catch(err => reject(err))
         })
@@ -41,9 +30,9 @@ const userController = {
         })
     },
 
-    getById: (_id) => {
+    getById: ({id: id}) => {
         return new Promise((resolve, reject) => {
-            Users.findOne(_id)
+            Users.findOne(id)
             .then(data => resolve(data))
             .catch(err => reject(err))
         })
