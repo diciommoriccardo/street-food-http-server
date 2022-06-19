@@ -5,9 +5,7 @@ const router = express.Router();
 
 
 router.post("/login", passport.authenticate('local'), (req, res) => {
-    userController.login(req)
-    .then(data => res.status(200).json(data))
-    .catch(err => res.status(500).json(err))
+    res.status(200).redirect("/menu")
 });
 
 router.post("/signup", (req, res) => {
@@ -26,7 +24,7 @@ router.get('/oauth2/redirect/google', passport.authenticate('google', { failureR
 router.get("/logout", (req, res) => {
     req.session.destroy(function () {
       res.clearCookie("connect.sid");
-      res.redirect("/");
+      res.status(200).send("/login");
     });
   });
 

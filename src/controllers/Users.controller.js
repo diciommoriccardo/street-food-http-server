@@ -1,6 +1,7 @@
 var Users = require('../models/Users.js');
 var Bcrypt = require('../helpers/Bcrypt.js');
 
+
 const userController = {
     signUp: (req) => {
         return new Promise((resolve, reject) => {

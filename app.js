@@ -23,10 +23,10 @@ var proxy = httpProxy.createProxyServer({
 
 require('./src/middlewares/Passport.js')(passport);
 app.use(session({
-    secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
+    secret: SERVER.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
