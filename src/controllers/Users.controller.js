@@ -30,7 +30,7 @@ const userController = {
 
     getById: ({id: id}) => {
         return new Promise((resolve, reject) => {
-            Users.findOne(id)
+            Users.findOne({id})
             .then(data => resolve(data))
             .catch(err => reject(err))
         })

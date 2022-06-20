@@ -10,9 +10,9 @@ module.exports = function(passport) {
       });
       
       passport.deserializeUser(async (id, done) => {
-        const currentUser = await userController.findOne({ id });
+        const currentUser = await userController.getById({ id });
         done(null, currentUser);
       });
     passport.use(googleStrategy);
-    passport.use(new LocalStrat(Users.authenticate()));
+    passport.use(new LocalStrat({usernameField: 'email'}, Users.authenticate()));
 };
