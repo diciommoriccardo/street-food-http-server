@@ -22,6 +22,7 @@ var proxy = httpProxy.createProxyServer({
 });
 
 require('./src/middlewares/Passport.js')(passport);
+app.use(express.json())
 app.use(session({
     secret: SERVER.SESSION_SECRET,
     resave: false,

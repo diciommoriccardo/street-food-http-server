@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 var localMongoStrat = require('passport-local-mongoose')
 
 const Users = mongoose.model("Users", mongoose.Schema({
-    id: {
-        type: String,
-        default: null,
-      },
       email: {
         type: String,
         required: [true, "email required"],
@@ -16,6 +12,6 @@ const Users = mongoose.model("Users", mongoose.Schema({
       profilePhoto: String,
       password: String,
       source: { type: String, required: [true, "source not specified"] },
-}).plugin(localMongoStrat))
+}).plugin(localMongoStrat, { usernameField : 'email' }))
 
 module.exports = Users;

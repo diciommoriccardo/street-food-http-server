@@ -9,17 +9,15 @@ const Bcrypt = {
 
 async function getHashedPassword(password){
     return new Promise((resolve, reject) => {
-        try {
-            bcrypt.genSalt(10)
+        console.log("dentro")
+            bycript.genSalt(10)
             .then(salt => {
-                bcrypt.hash(password, salt)
+                console.log(salt)
+                bycript.hash(password, salt)
                 .then(hash => resolve(hash))
                 .catch(err => reject(err))
             })
             .catch(err => reject(err))
-        } catch (err) {
-            return err
-        }
     })
 }
 

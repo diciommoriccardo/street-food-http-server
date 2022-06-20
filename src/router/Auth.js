@@ -10,7 +10,7 @@ router.post("/login", passport.authenticate('local'), (req, res) => {
 
 router.post("/signup", (req, res) => {
     userController.signUp(req)
-    .then(data => res.status(200).json(data))
+    .then(data => res.status(201).json(data))
     .catch(err => res.status(500).json(err))
 });
 

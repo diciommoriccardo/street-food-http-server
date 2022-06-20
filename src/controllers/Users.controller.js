@@ -5,11 +5,8 @@ var Bcrypt = require('../helpers/Bcrypt.js');
 const userController = {
     signUp: (req) => {
         return new Promise((resolve, reject) => {
-            Bcrypt.getHashedPassword(req.body.password)
-            .then(hash => {
-                req.body.password = hash;
-                return new Users(req.body).save()
-            })
+            Users.register(new Users(req.body), req.body.password)
+            .then(user => user.save())
             .then(data => resolve(data))
             .catch(err => reject(err))
         })
