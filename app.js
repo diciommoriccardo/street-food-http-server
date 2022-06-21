@@ -4,6 +4,7 @@ var express = require('express');
 var httpProxy = require("http-proxy");
 var passport = require('passport');
 var session = require('express-session');
+var cors = require('cors')
 const { TARGET_SERVER, SERVER } = require("./src/config/config.js");
 const Mongo = require("./src/helpers/Mongo.js");
 const authRoutes = require('./src/router/Auth.js');
@@ -29,9 +30,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false }
 }));
+app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 app.use(authRoutes);
 app.all('/api/*', (req, res) => {

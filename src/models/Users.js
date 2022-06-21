@@ -12,6 +12,7 @@ const Users = mongoose.model("Users", mongoose.Schema({
       profilePhoto: String,
       password: String,
       source: { type: String, required: [true, "source not specified"] },
+      type: String
 }).plugin(localMongoStrat, { usernameField : 'email' }))
 
 module.exports = Users;

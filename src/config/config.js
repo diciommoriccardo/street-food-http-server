@@ -22,9 +22,15 @@ const GOOGLE = {
     SECRET: process.env.GOOGLE_SECRET
 }
 
+const JWT = {
+    SECRET_KEY: process.env.ACCESS_TOKEN_SECRET,
+    EXPIRES_IN: 10800,
+}
+
 module.exports =  {
     SERVER,
     TARGET_SERVER,
     DATABASE,
-    GOOGLE
+    GOOGLE,
+    JWT
 }

@@ -2,10 +2,12 @@ var express = require('express');
 var passport = require('passport');
 const userController = require('../controllers/Users.controller.js');
 const router = express.Router();
+const jwtHelper = require('../helpers/jwt.js');
 
 
 router.post("/login", passport.authenticate('local'), (req, res) => {
-    res.status(200).json({"message": "okay"});
+  console.log(req.user);  
+  res.status(200).json({"message": "okay"});
 });
 
 router.post("/signup", (req, res) => {
