@@ -25,8 +25,12 @@ router.post("/signup", (req, res) => {
 router.get("/login/google", passport.authenticate('google', {
     scope: ["profile", "email"],
   }));
-router.get('/oauth2/redirect/google', passport.authenticate('google', { failureRedirect: '/login', failureMessage: true }), function(req, res) {
-    res.status(200).json({"message":"okay"});
+router.get('/oauth2/redirect/google', passport.authenticate('google', { 
+    successRedirect: 'http://localhost:3000/menu', 
+    failureRedirect: 'http://localhost:3000/login', 
+    failureMessage: true 
+  }), function(req, res) {
+    res.redirect('http://localhost:3000/menu');
 });
 
 router.get("/logout", (req, res) => {

@@ -14,7 +14,7 @@ const userController = {
 
     getByEmail: ({email: email}) => {
         return new Promise((resolve, reject) => {
-            Users.findOne(email)
+            Users.findOne({email})
             .then(data => resolve(data))
             .catch(err => reject(err))
         })
