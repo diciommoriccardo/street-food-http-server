@@ -8,6 +8,7 @@ var cors = require('cors')
 const { TARGET_SERVER, SERVER } = require("./src/config/config.js");
 const Mongo = require("./src/helpers/Mongo.js");
 const authRoutes = require('./src/router/Auth.js');
+const ifLoggedIn = require('./src/middlewares/isLogged.js');
 
 require('./src/config/strategies/google');
 
@@ -35,7 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(authRoutes);
-app.all('/api/*', (req, res) => {
+app.all('/api/*', ifLoggedIn, (req, res) => {
     proxy.web(req, res);
 })
 

@@ -6,8 +6,14 @@ const jwtHelper = require('../helpers/jwt.js');
 
 
 router.post("/login", passport.authenticate('local'), (req, res) => {
-  console.log(req.user);  
-  res.status(200).json({"message": "okay"});
+  const accessToken = jwtHelper.signAccessToken({email: req.user.email, type: req.user.type})  
+  res.status(200).json({
+    user: {
+      email: req.user.email,
+      displayName: `${req.user.firstName} ${req.user.lastName}`
+    },
+    accessToken: accessToken
+  });
 });
 
 router.post("/signup", (req, res) => {

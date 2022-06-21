@@ -32,8 +32,7 @@ const { GOOGLE } = require('../config.js');
     }
 
       if (currentUser.source != "google") {
-        //return error
-        //return done(null, false, { message: `You have previously signed up with a different signin method` });
+        return done(null, false, { message: `You have previously signed up with a different signin method` });
       }
 
       return done(null, currentUser);
