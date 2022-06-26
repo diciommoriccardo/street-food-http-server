@@ -3,6 +3,7 @@ require('dotenv').config()
 const SERVER = {
     HOST: process.env.HOST || 'localhost',
     PORT: process.env.PORT || 5000,
+    PORT_SECURE: process.env.PORT_SECURE || 5001,
     SESSION_SECRET: process.env.SESSION_SECRET
 }
 

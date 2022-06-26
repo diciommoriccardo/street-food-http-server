@@ -26,7 +26,8 @@ const { GOOGLE } = require('../config.js');
           email,
           firstName,
           lastName,
-          profilePhoto
+          profilePhoto,
+          source
         })
         return done(null, newUser);
     }

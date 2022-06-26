@@ -3,13 +3,14 @@ var fs = require('fs');
 const getCertificate = () => {
     try {
         return {
-            key: fs.readFileSync('../sslcert/key.pem', 'utf8'),
-            cert: fs.readFileSync('../src/sslcert/certificate.pem', 'utf8'),
+            key: fs.readFileSync('src/config/ssl/code.key', 'utf8'),
+            cert: fs.readFileSync('src/config/ssl/code.cert', 'utf8'),
         }
     } catch (error) {
+        console.log(error)
         console.error('Could not find SSL Certificate files, https is disabled.');
         return null;
     }
 };
 
-module.export =  getCertificate;
+module.exports =  getCertificate;
